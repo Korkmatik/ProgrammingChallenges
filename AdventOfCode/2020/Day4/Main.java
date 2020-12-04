@@ -11,7 +11,7 @@ public class Main {
         scanner.useDelimiter("\n\n"); 
 
         String[] mustHaveFields = { "byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid" };
-        int numberNotValid = 0;
+        int numberValid = 0;
         int numberPassports = 0;
         while (scanner.hasNext()) {
             String passport = scanner.next();
@@ -29,22 +29,19 @@ public class Main {
                 System.out.println("Key: " + keys[i]);
             }
 
-            for (int i = 0; i < mustHaveFields.length; i++) {
-                String key = mustHaveFields[i];
-                System.out.println("Checking key: " + key);
-                boolean match = false;
-                for (int j = 0; j < keys.length; j++) {
-                    if (key.equals(mustHaveFields[j])) {
-                        match = true;
+            if (keys.length == 8) {
+                numberValid++;
+            } else if (keys.length == 7) {
+                boolean valid = true;
+                for (int i = 0; i < keys.length; i++) {
+                    if (keys[i].contains("cid")) {
+                        valid = false;
                         break;
                     }
                 }
-
-                if (!match) {
-                    numberNotValid++;
-                    break;
+                if (valid) {
+                    numberValid++;
                 }
-
             }
 
             System.out.println("-------------------------------------------------------");
@@ -52,7 +49,7 @@ public class Main {
 
         scanner.close();
 
-        System.out.println("Valid: " + (numberPassports - numberNotValid));
+        System.out.println("Valid: " + numberValid);
     }
 
 }

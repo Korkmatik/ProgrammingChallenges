@@ -100,10 +100,10 @@ int main()
         "FBFBBFFRLR", "BFFFBBFRRR", "FFFBBBFRRR", "BBFFBBFRLL"
     };
 
-    /*while (getline(inputFile, input)) {*/
+    while (getline(inputFile, input)) {
 
-    for (int i = 0; i < testData.size(); i++) {
-        input = testData[i];
+    /*for (int i = 0; i < testData.size(); i++) {
+        input = testData[i];*/
         row = Row(input, 0, 0, 128);
         column = Column(input, 0, 0, 8);
         seatID = row * 8 + column;

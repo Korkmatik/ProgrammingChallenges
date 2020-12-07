@@ -15,7 +15,7 @@ int main()
         if (word.length() > 10) 
         {
             int shorted = word.length() - 2;
-            std::string shortedWord = word.at(0) + std::to_string(shorted) + word.at(word.lengt() - 1);
+            std::string shortedWord = word.at(0) + std::to_string(shorted) + word.at(word.length() - 1);
             output.push_back(shortedWord);
         }
         else

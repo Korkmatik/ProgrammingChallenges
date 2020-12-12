@@ -40,13 +40,35 @@ int climbStairs(int n)
     return ret;
 }
 
+int climbStairsOptimized(int n)
+{
+    int a = 1;
+    int b = 1;
+    int c;
+    for (int i = 2; i <= n; i++) 
+    {
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    return c;
+}
+
 int main()
 {
+    printf("Not optimized:\n");
     printf("Test Case 1:\n");
     printf("f(3)=%d\n", climbStairs(3));
 
     printf("Test Case 2:\n");
     printf("f(5)=%d\n", climbStairs(5));
+
+    printf("Optimized:\n");
+    printf("Test Case 1:\n");
+    printf("f(3)=%d\n", climbStairsOptimized(3));
+
+    printf("Test Case 2:\n");
+    printf("f(5)=%d\n", climbStairsOptimized(5));
     
     return 0;
 }

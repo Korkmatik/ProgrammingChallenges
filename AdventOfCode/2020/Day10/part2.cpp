@@ -9,19 +9,39 @@ using namespace std;
 
 long numArrangements = 0;
 
-void rec(vector<int> adapterJolts)
+unsigned long long rec(const vector<int>& jolts)
 {
-    vector<int> possibilities;
-    possibilities.push_back(1);
-
-    for (int i = 0; i < adapterJolts.size(); i++)
+    vector<unsigned long long> n;
+    int max = jolts[jolts.size()-1];
+    cout << "Max: " << max << endl;
+    for (int i = 0; i <= max; i++)
     {
-        int num = adapterJolts[i];
-        if (possibilities.size() < 3)
-        {
-            
-        }
+        n.push_back(0);
     }
+
+    cout << "N size: " << n.size() << endl;
+
+    n[0] = 1;
+    int j = 1;
+    int i = 3;
+    for (; j < jolts.size(); i++, j++)
+    {
+        int pos = jolts[j];
+        unsigned long long calc = 0;
+        for (int k = 1; k <= 3; k++) 
+        {
+            if (pos - k >= 0)
+            {
+                calc += n[pos-k];
+            }            
+        }
+        
+
+        cout << "Calc: " << calc << " for: " << pos << endl;
+        n[pos] = calc;
+    }
+
+    return n[n.size() - 1];
 }
 
 int main()
@@ -50,9 +70,7 @@ int main()
         cout << n << endl;
     });
 
-    rec(adapterJolts);
-
-    std::cout << "Number Arrangements: " << numArrangements << endl;
+    std::cout << "Number Arrangements: " << rec(adapterJolts) << endl;
 
     return 0;
 }

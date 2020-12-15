@@ -40,8 +40,8 @@ with open(readme_file_path, "w") as readme:
     readme.write(f"Link: {challenge_url}\n\n")
     readme.write("# How To Compile:\n")
 
-    compiler = "g++"
-    if f.find(".c") != -1:
-        compiler = "gcc"
+    compiler = "gcc"
+    if f.find(".cpp") != -1:
+        compiler = "g++"
 
     readme.write(f"`{compiler} {f}`\n")
